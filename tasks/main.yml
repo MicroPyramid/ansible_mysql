@@ -1,2 +1,14 @@
 ---
 # tasks file for mysql_server
+- name: Setting MySQL root password before installing
+  debconf: "name='mysql-server' question='mysql-server/root_password' value='{{mysql_server_password | quote}}' vtype='password'"
+
+- name: Confirm MySQL root password before installing
+  debconf: "name='mysql-server' question='mysql-server/root_password_again' value='{{mysql_server_password | quote}}' vtype='password'"
+
+- name: Install MySQL
+  apt: "package='{{ item }}' state=present force=yes"
+  when: ansible_os_family == 'Debian'
+  with_items:
+    - mysql-server
+    - libmysqlclient-dev

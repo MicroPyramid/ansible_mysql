@@ -1,2 +1,3 @@
 ---
 # vars file for mysql_server
+mysql_server_password:  {{ mysql_server_password }}
