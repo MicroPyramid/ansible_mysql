@@ -10,6 +10,8 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - trusty
+    - vivid
+    - precise
   
   categories:
   - database 
